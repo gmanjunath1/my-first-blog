@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 """Django's command-line utility for administrative tasks."""
+
+#This is a script which helps with management of the site.
+#Allows us to run the web server without installing anything else
+
 import os
 import sys
 
