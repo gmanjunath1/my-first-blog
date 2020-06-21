@@ -2,20 +2,26 @@
 
 {% block content %}
     {% if form.errors %}
-        <p>Your username and password didn't match. Please try again.</p>
+        <div class="alert alert-danger text-center" style = "margin-left:45%;">
+            <strong>Your username and password didn't match. Please try again.</strong> 
+        </div>
+    {% else %}
+        <div class="alert alert-info text-center" style = "margin-left:45%;">
+            <strong>Please enter your username and password.</strong> 
+        </div>
     {% endif %}
 
-    <form method="post" action="{% url 'login' %}">
+    <form method="post" class= "well well-lg text-center" style = "margin-left: 45%;" action="{% url 'login' %}">
     {% csrf_token %}
-        <table>
-        <tr>
-            <td>{{ form.username.label_tag }}</td>
-            <td>{{ form.username }}</td>
-        </tr>
-        <tr>
-            <td>{{ form.password.label_tag }}</td>
-            <td>{{ form.password }}</td>
-        </tr>
+        <table class = "center" style = "margin-left:auto; margin-right:auto;">
+            <tr>
+                <td>{{ form.username.label_tag }}</td>
+                <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.password.label_tag }}</td>
+                <td>{{ form.password }}</td>
+            </tr>
         </table>
 
         <input type="submit" value="login" />
