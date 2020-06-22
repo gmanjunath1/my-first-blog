@@ -1,7 +1,7 @@
 {% load static %}
 <html>
     <head>
-        <title>Gautam's Blog</title>
+        <title>Gautam's Web</title>
         <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -11,23 +11,27 @@
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
     <body>
-        <div class="title-container">
-            <div class = "jumbotron text-left">
+        <div class="top-border-container">
+            <div class = "jumbotron">
+                
+                <img src="{% static 'images/Picture1.png' %}" class="media-object col-md-1" style="vertical-align:left;margin:0px 0px;width:210px;height:178px;">
+                <img src="{% static 'images/Picture2.png' %}" class="media-object col-md-1" style="vertical-align:left;margin:0px 0px;width:210px;height:178px;">
                 {% if user.is_authenticated %}
                     <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
                     <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
                     <p class="top-menu">User: {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
                 {% else %}
-                    <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+                    <a href="{% url 'login' %}" class="top-menu" ><span class="glyphicon glyphicon-lock"></span></a>
                 {% endif %}
-                <h1><a href="/">Gautam's Blog  </a></h1>
-                <p>Hiya! I'm a Computer Science student at The University of Birmingham. Welcome to my blog!</p>
+                <h1><a href="/" style="color:white;font-family: Comic Sans MS, cursive, sans-serif;">Gautam's Mind </a></h1>
+                <p style="color:#DEDBF8;margin-top: 25px;font-style: italic;">Hiya! I'm a Computer Science student at The University of Birmingham. Welcome to my blog!</p>
+
             </div>
         </div>
 
-        <div class="content container">
+        <div class="content-container">
             <div class="row">
-                <div class="col-md-8 text-justify">
+                <div class="col-md-9 text-justify">
                 {% block content %}
                 {% endblock %}
                 </div>

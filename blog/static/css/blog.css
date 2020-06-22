@@ -1,45 +1,33 @@
-/*.page-header {
+h1.top-border-container a {
+    padding: 0px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    text-align: center;
+    color: white;
     background-color: #8458B3;
-    margin-top: 0;
-    padding: 10px 20px 20px 25px;
-}*/
-
-.jumbotron {
-    background-color: #8458B3;
-    margin-top: 0;
-    padding: 5px 20px 20px 25px;
-    font-color: #FFFFFF;
-}
-
-.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
-/*    color: #ffffff;
     font-size: 36pt;
-    text-decoration: none;*/
-
-	padding: 0px;
-	text-align: left;
-	color: white;
-	font-size: 36pt;
-}
-
-.title-container {
-	padding: 0px;
-	text-align: center;
-	color: white;
-	font-size: 14pt;
-	font-style: italic;
+    padding: 0px 100px 0px 0px;
 }
 
 
-.content {
-    margin-left: 40px;
-    width: 100%;
-}
-
-h1, h2, h3, h4 {
+p.top-border-container, a.top-border-container {
+    padding-left: 10px;
+    background-color: #8458B3;
+    text-align: right;
     font-family: "Comic Sans MS", cursive, sans-serif
-
+    color: white;
+    font-size: 16pt;
 }
+
+
+.jumbotron{
+    background-color: #8458B3;
+    margin-top: 0;
+    padding: 5px 100px 20px 0px;
+    font-color: white;
+    text-align: center;
+}
+
+
 
 .date {
     color: #828282;
@@ -65,8 +53,6 @@ h1, h2, h3, h4 {
     margin-bottom: 70px;
     padding-left: 10px;
     font-family: "Arial", cursive, sans-serif
-
-    
 }
 
 .post h2 a, .post h2 a:visited {
@@ -75,6 +61,5 @@ h1, h2, h3, h4 {
 }
 
 body{
-	background-color: #E7DCFA;
+    background-color: #E7DCFA;
 }
-
