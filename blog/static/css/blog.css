@@ -18,15 +18,24 @@ p.top-border-container, a.top-border-container {
     font-size: 16pt;
 }
 
-
-.nav-pills {
-    font-size: 16pt; 
-    padding-right:40;
+.button-menu { 
     text-align: text-center;
     position: fixed;
     left: 84%;
     top: 23%;
     width: 290px;
+    font-color: #8458B3;
+}
+
+.btn{
+    font-size: 16pt;
+    text-align: text-center;
+    background-color: #b59ad1
+
+}
+
+.btn:hover, .btn:focus, .btn:active{
+     background: #8458B3;
 }
 
 
@@ -63,6 +72,7 @@ p.top-border-container, a.top-border-container {
 }
 
 .post {
+    top:23%;
     margin-bottom: 70px;
     padding-left: 10px;
     font-family: "Arial", cursive, sans-serif
