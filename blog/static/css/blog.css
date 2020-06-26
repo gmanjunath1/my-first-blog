@@ -19,15 +19,28 @@ p.top-border-container, a.top-border-container {
 }
 
 
-.jumbotron{
-    background-color: #8458B3;
-    margin-top: 0;
-    padding: 5px 100px 20px 0px;
-    font-color: white;
-    text-align: center;
+.nav-pills {
+    font-size: 16pt; 
+    padding-right:40;
+    text-align: text-center;
+    position: fixed;
+    left: 84%;
+    top: 23%;
+    width: 290px;
 }
 
 
+.jumbotron{
+    background-color: #8458B3;
+    margin-top: 0;
+    padding: 5px 100px 0px 0px;
+    font-color: white;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+
+}
 
 .date {
     color: #828282;
