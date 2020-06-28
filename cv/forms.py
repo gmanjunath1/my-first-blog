@@ -1,5 +1,5 @@
 from django import forms
-from .models import skillSummary, Projects, WorkExperience
+from .models import skillSummary, Projects, WorkExperience, AchieveAccomplish
 
 class skillsForm(forms.ModelForm):
 
@@ -20,3 +20,10 @@ class experienceForm(forms.ModelForm):
     class Meta:
         model = WorkExperience
         fields = ('companyName', 'location', 'duration', 'startDate', 'extraInfo',) 
+
+
+class achievementForm(forms.ModelForm):
+
+    class Meta:
+        model = AchieveAccomplish
+        fields = ('titleAch', 'dateAchieved', 'description',) 

@@ -4,7 +4,7 @@ from .models import skillSummary, Education, WorkExperience, AchieveAccomplish, 
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
-from .forms import skillsForm, projectForm, experienceForm
+from .forms import skillsForm, projectForm, experienceForm, achievementForm
 
 # Create your views here.
 def cv_sectionList(request):
@@ -87,12 +87,12 @@ def projects_remove(request, pk):
 
 def workExperiencePage(request):
     experiences = WorkExperience.objects.order_by('-startDate')
-    return render(request, 'cv/workExperience_main.html', {'exp' : experiences})
+    return render(request, 'cv/workExperience_main.html', {'experiences' : experiences})
 
 @login_required
 def WorkExperience_detail(request, pk):
     experiences = get_object_or_404(WorkExperience, pk=pk)
-    return render(request, 'cv/workExperience_Entry_Detail.html', {'exp': experiences})
+    return render(request, 'cv/workExperience_Entry_Detail.html', {'experiences': experiences})
 
 @login_required
 def WorkExperience_edit(request, pk):
@@ -132,6 +132,50 @@ def WorkExperience_remove(request, pk):
 
 
 
+def achieveAccomplish(request):
+    achievements = AchieveAccomplish.objects.order_by('-dateAchieved')
+    return render(request, 'cv/achievements_main.html', {'achievements' : achievements})
+
+@login_required
+def achieve_detail(request, pk):
+    achieve = get_object_or_404(AchieveAccomplish, pk=pk)
+    return render(request, 'cv/achievement_Entry_detail.html', {'achievements': achieve})
+
+@login_required
+def achieve_edit(request, pk):
+    achievements = get_object_or_404(AchieveAccomplish, pk=pk)
+    if request.method == "POST":
+        form = achievementForm(request.POST, instance=achievements)
+        if form.is_valid():
+            achievements = form.save(commit=False)
+            achievements.author = request.user
+            achievements.save()
+            return redirect('achievement_detail', pk=achievements.pk)
+    else:
+        form = achievementForm(instance=achievements)
+    return render(request, 'cv/achievement_edit.html', {'form': form})
+
+
+@login_required
+def achieve_new(request):
+    if request.method == "POST":
+        form = achievementForm(request.POST)
+        if form.is_valid():
+            achievement = form.save(commit=False)
+            achievement.author = request.user
+            achievement.save()
+            return redirect('achievement_detail', pk=achievement.pk)
+    else:
+        form = achievementForm()
+    return render(request, 'cv/achievement_edit.html', {'form': form})
+
+
+@login_required
+def achieve_remove(request, pk):
+    achievement = get_object_or_404(AchieveAccomplish, pk=pk)
+    achievement.delete()
+    return redirect('achievementsPage')
+
 
 
 
@@ -141,14 +185,6 @@ def educationPage(request):
 	A = Education.objects.filter(edu_type='A-Level')
 	uni = Education.objects.filter(edu_type='Degree')
 	return render(request, 'cv/Education_main.html', {'gcses' : gcses, 'AS_Levels' : AS, 'A_Levels' : A, 'uni' : uni})
-
-def workExperiencePage(request):
-	experiences = WorkExperience.objects.order_by('-startDate')
-	return render(request, 'cv/workExperience_main.html', {'experiences' : experiences})
-
-def achieveAccomplish(request):
-    achievements = AchieveAccomplish.objects.order_by('-dateAchieved')
-    return render(request, 'cv/achievements_main.html', {'achievements' : achievements})
 
 
 def Memberships(request):

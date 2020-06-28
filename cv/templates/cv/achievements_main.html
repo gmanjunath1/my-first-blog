@@ -4,11 +4,20 @@
 	<title>Gautam's Achievements</title>
 {% endblock %}
 
+{% block new_addition %}
+    <a href="{% url 'achievement_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+{% endblock %}
+
 {% block content %}
 	{% for ach in achievements %}
 	    <div class="page-header well well-lg col-md-5" style="margin-left:30px;">
-	        <h2><a style="color:#8458B3;font-family: Comic Sans MS, cursive, sans-serif;font-style: italic">{{ach.titleAch}}</a><small><br> <br>{{ach.dateAchieved}}</small></h2>
-	        	<p>{{ ach.description|linebreaksbr }}</p>	        
+	    	{% if user.is_authenticated %}
+	        	<h2><a href="{% url 'achievement_detail' pk=ach.pk %}" style="color:#8458B3;font-family: Comic Sans MS, cursive, sans-serif;font-style: italic">{{ach.titleAch}}</a><small><br> <br>{{ach.dateAchieved}}</small></h2>
+	        {% else %}
+	        	<h2 style="color:#8458B3;font-family: Comic Sans MS, cursive, sans-serif;font-style: italic">{{ach.titleAch}}<small><br> <br>{{ach.dateAchieved}}</small></h2>
+			{% endif %}
+	        <p>{{ ach.description|linebreaksbr }}</p>	        
+	        
 	    </div>
 	{% endfor %}
 {% endblock %}

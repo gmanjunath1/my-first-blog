@@ -4,6 +4,10 @@
 	<title>Gautam's Work Experience</title>
 {% endblock %}
 
+{% block new_addition %}
+    <a href="{% url 'WorkExperience_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+{% endblock %}
+
 {% block content %}
 	{% for exp in experiences %}
 	    <div class="page-header well well-lg col-md-10" style="margin-left:30px;">
