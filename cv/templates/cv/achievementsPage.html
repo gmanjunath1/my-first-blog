@@ -1,0 +1,14 @@
+{% extends 'cv/cv_menu.html' %}
+
+{% block titleTab %}
+	<title>Gautam's Achievements</title>
+{% endblock %}
+
+{% block content %}
+	{% for ach in achievements %}
+	    <div class="page-header well well-lg col-md-5" style="margin-left:30px;">
+	        <h2><a style="color:#8458B3;font-family: Comic Sans MS, cursive, sans-serif;font-style: italic">{{ach.titleAch}}</a><small><br> <br>{{ach.dateAchieved}}</small></h2>
+	        	<p>{{ ach.description|linebreaksbr }}</p>	        
+	    </div>
+	{% endfor %}
+{% endblock %}

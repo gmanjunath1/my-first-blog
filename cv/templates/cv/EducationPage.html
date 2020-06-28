@@ -1,0 +1,37 @@
+{% extends 'cv/cv_menu.html' %}
+
+{% block titleTab %}
+	<title>Gautam's Education</title>
+{% endblock %}
+
+{% block content %}
+
+    {% for deg in uni %}
+	    <div class="page-header well well-lg col-md-4" style="margin-left:30px;">
+	        <h2><a style="color:#8458B3;font-family: Comic Sans MS, cursive, sans-serif;font-style: italic">{{ deg.subject }}: Current 2nd Year</a></h2>
+	    	<p>{{ deg.extraInfo |linebreaksbr }}</p>        
+	    </div>
+    {% endfor %}
+
+    <div class="page-header well well-lg col-md-2" style="margin-left:30px;">
+        <h2><a style="color:#8458B3;font-family: Comic Sans MS, cursive, sans-serif;font-style: italic">A-Level</a></h2>
+        {% for A in A_Levels %}
+        	<p>{{ A.subject|linebreaksbr }} - {{A.gradeAchieved}}</p>
+        {% endfor %}
+    </div>
+
+    <div class="page-header well well-lg col-md-2" style="margin-left:30px;">
+        <h2><a style="color:#8458B3;font-family: Comic Sans MS, cursive, sans-serif;font-style: italic">AS-Level</a></h2>
+        {% for AS in AS_Levels %}
+        	<p>{{ AS.subject|linebreaksbr }} - {{AS.gradeAchieved}}</p>
+        {% endfor %}
+    </div>
+    
+    <div class="page-header well well-lg col-md-2" style="margin-left:30px;">
+        <h2><a style="color:#8458B3;font-family: Comic Sans MS, cursive, sans-serif;font-style: italic">GCSE</a></h2>
+        {% for gcse in gcses %}
+        	<p>{{ gcse.subject|linebreaksbr }} - {{gcse.gradeAchieved}}</p>
+        {% endfor %}
+    </div>
+
+{% endblock %}

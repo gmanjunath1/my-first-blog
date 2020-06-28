@@ -1,0 +1,16 @@
+{% extends 'cv/cv_menu.html' %}
+
+{% block titleTab %}
+	<title>Gautam's CV</title>
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-11" style="margin-left:20px; margin-top:9px;">
+        <h2 class="well well lg"><a href="{% url 'summarySkillsPage' %}" style="color:#8458B3;font-family: Comic Sans MS, cursive, sans-serif;font-style: italic">Summary of Skills</a></h2>
+        <h2 class="well well-lg"><a href="{% url 'EducationPage' %}" style="color:#8458B3;font-family: Comic Sans MS, cursive, sans-serif;font-style: italic">Education History</a></h2>
+        <h2 class="well well-lg"><a href="{% url 'projectsPage' %}" style="color:#8458B3;font-family: Comic Sans MS, cursive, sans-serif;font-style: italic">Projects</a></h2>
+        <h2 class="well well-lg"><a href="{% url 'workExperiencePage' %}" style="color:#8458B3;font-family: Comic Sans MS, cursive, sans-serif;font-style: italic">Work Experience & Professional Courses</a></h2>
+        <h2 class="well well-lg"><a href="{% url 'achievementsPage' %}" style="color:#8458B3;font-family: Comic Sans MS, cursive, sans-serif;font-style: italic">Achievements & Accomplishments</a></h2>
+        <h2 class="well well-lg"><a href="{% url 'membershipsPage' %}" style="color:#8458B3;font-family: Comic Sans MS, cursive, sans-serif;font-style: italic">Memberships & Extra-Curricular</a></h2>
+    </div>
+{% endblock %}

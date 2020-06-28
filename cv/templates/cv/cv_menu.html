@@ -1,20 +1,15 @@
 {% load static %}
 <html>
     <head>
-        <title>Gautam's Blog</title>
-
-        <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> -->
+        {% block titleTab %}
+		{% endblock %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<!--         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
     <body>
         <div class="top-border-container">
-            <div class = "jumbotron">
-                
+            <div class = "jumbotron">             
                 <img src="{% static 'images/Picture1.png' %}" class="media-object col-md-1" style="vertical-align:left;margin:0px 0px;width:210px;height:178px;">
                 <img src="{% static 'images/Picture2.png' %}" class="media-object col-md-1" style="vertical-align:left;margin:0px 0px;width:210px;height:178px;">
                 {% if user.is_authenticated %}
@@ -22,24 +17,23 @@
                     <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
                     <a href="{% url 'logout' %}" class="top-menu"><span class="glyphicon glyphicon-log-out"></span></a>
                     <p class="top-menu">Logged in as: {{ user.username }} </p>
+
                 {% else %}
                     <a href="{% url 'login' %}" class="top-menu" ><span class="glyphicon glyphicon-lock"></span></a>
                 {% endif %}
                 <h1><a href="/" style="color:white;font-family: Comic Sans MS, cursive, sans-serif;">Gautam Manjunath </a></h1>
                 <p style="color:#DEDBF8;margin-top: 25px;font-style: italic;">Hiya! I'm a Computer Science student at The University of Birmingham. Welcome to my website!</p>
-
             </div>
         </div>
-
         <div class="content-container">
             <div class="row">
-                <div class="col-md-10 text-justify" style="padding-top: 172px;">
+                <div class="col-md-11 text-justify" style="padding-top: 172px;">
                     {% block content %}
                     {% endblock %}
                 </div>
                 <div class="button-menu col-md-2">
-                    <a href="/" type="button" class="btn btn-primary btn-block active">Home - Blog</a>
-                    <a href="/cv" type="button" class="btn btn-primary btn-block">CV</a>
+                    <a href="/" type="button" class="btn btn-primary btn-block">Home - Blog</a>
+                    <a href="/cv" type="button" class="btn btn-primary btn-block active">CV</a>
                     <a href="https://facebook.com" type="button" class="btn btn-primary btn-block">Facebook</a>
                     <a href="https://twitter.com" type="button" class="btn btn-primary btn-block">Twitter</a>
                     <a href="https://linkedin.com" type="button" class="btn btn-primary btn-block">LinkedIn</a>

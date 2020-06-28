@@ -18,6 +18,11 @@ p.top-border-container, a.top-border-container {
     font-size: 16pt;
 }
 
+.top-menu {
+    text-align: text-right;
+    margin-top:200px;
+}
+
 .button-menu { 
     text-align: text-center;
     position: fixed;
@@ -34,10 +39,9 @@ p.top-border-container, a.top-border-container {
 
 }
 
-.btn:hover, .btn:focus, .btn:active{
-     background: #8458B3;
+.btn:hover, .btn:focus{
+     background: #8458B3 !important;
 }
-
 
 .jumbotron{
     background-color: #8458B3;
@@ -61,6 +65,7 @@ p.top-border-container, a.top-border-container {
 
 .post-form textarea, .post-form input {
     width: 100%;
+
 }
 
 .top-menu, .top-menu:hover, .top-menu:visited {
@@ -76,6 +81,7 @@ p.top-border-container, a.top-border-container {
     margin-bottom: 70px;
     padding-left: 10px;
     font-family: "Arial", cursive, sans-serif
+
 }
 
 .post h2 a, .post h2 a:visited {
@@ -85,4 +91,5 @@ p.top-border-container, a.top-border-container {
 
 body{
     background-color: #E7DCFA;
+    font-size: 170%;
 }
