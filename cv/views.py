@@ -4,7 +4,7 @@ from .models import skillSummary, Education, WorkExperience, AchieveAccomplish, 
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
-from .forms import skillsForm, projectForm
+from .forms import skillsForm, projectForm, experienceForm
 
 # Create your views here.
 def cv_sectionList(request):
@@ -14,6 +14,7 @@ def skillsSummaryPage(request):
     skills = skillSummary.objects.all()
     return render(request, 'cv/skills_main.html', {'skills' : skills[0]})
 
+@login_required
 def skills_detail(request, pk):
     #Post.objects.get(pk=pk)
     #skills = get_object_or_404(skillSummary, pk=pk)
@@ -42,8 +43,8 @@ def projects(request):
     proj = Projects.objects.order_by('-projectDate')
     return render(request, 'cv/projects_main.html', {'projects' : proj})
 
+@login_required
 def projects_detail(request, pk):
-    #Post.objects.get(pk=pk)
     proj = get_object_or_404(Projects, pk=pk)
     return render(request, 'cv/projects_Entry_Detail.html', {'proj': proj})
 
@@ -55,7 +56,6 @@ def projects_edit(request, pk):
         if form.is_valid():
             proj = form.save(commit=False)
             proj.author = request.user
-            #post.published_date = timezone.now()
             proj.save()
             return redirect('projects_detail', pk=proj.pk)
     else:
@@ -82,6 +82,52 @@ def projects_remove(request, pk):
     proj = get_object_or_404(Projects, pk=pk)
     proj.delete()
     return redirect('projectsPage')
+
+
+
+def workExperiencePage(request):
+    experiences = WorkExperience.objects.order_by('-startDate')
+    return render(request, 'cv/workExperience_main.html', {'exp' : experiences})
+
+@login_required
+def WorkExperience_detail(request, pk):
+    experiences = get_object_or_404(WorkExperience, pk=pk)
+    return render(request, 'cv/workExperience_Entry_Detail.html', {'exp': experiences})
+
+@login_required
+def WorkExperience_edit(request, pk):
+    experiences = get_object_or_404(WorkExperience, pk=pk)
+    if request.method == "POST":
+        form = experienceForm(request.POST, instance=experiences)
+        if form.is_valid():
+            experiences = form.save(commit=False)
+            experiences.author = request.user
+            experiences.save()
+            return redirect('WorkExperience_detail', pk=experiences.pk)
+    else:
+        form = experienceForm(instance=experiences)
+    return render(request, 'cv/workExperience_edit.html', {'form': form})
+
+
+@login_required
+def WorkExperience_new(request):
+    if request.method == "POST":
+        form = experienceForm(request.POST)
+        if form.is_valid():
+            experience = form.save(commit=False)
+            experience.author = request.user
+            experience.save()
+            return redirect('WorkExperience_detail', pk=experience.pk)
+    else:
+        form = experienceForm()
+    return render(request, 'cv/workExperience_edit.html', {'form': form})
+
+
+@login_required
+def WorkExperience_remove(request, pk):
+    experience = get_object_or_404(WorkExperience, pk=pk)
+    experience.delete()
+    return redirect('workExperiencePage')
 
 
 
