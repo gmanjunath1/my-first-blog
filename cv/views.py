@@ -4,7 +4,7 @@ from .models import skillSummary, Education, WorkExperience, AchieveAccomplish, 
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
-from .forms import skillsForm, projectForm, experienceForm, achievementForm
+from .forms import skillsForm, projectForm, experienceForm, achievementForm, membershipForm
 
 # Create your views here.
 def cv_sectionList(request):
@@ -179,6 +179,12 @@ def achieve_remove(request, pk):
 
 
 
+
+
+
+
+
+
 def educationPage(request):
 	gcses = Education.objects.filter(edu_type='GCSE')
 	AS = Education.objects.filter(edu_type='AS-Level')
@@ -187,9 +193,54 @@ def educationPage(request):
 	return render(request, 'cv/Education_main.html', {'gcses' : gcses, 'AS_Levels' : AS, 'A_Levels' : A, 'uni' : uni})
 
 
+
+
+
+
+
+
+
 def Memberships(request):
     membs = memberships.objects.order_by('-dateMembership')
     return render(request, 'cv/memberships_main.html', {'membs' : membs})
 
+@login_required
+def membership_detail(request, pk):
+    membs = get_object_or_404(memberships, pk=pk)
+    return render(request, 'cv/memberships_Entry_Detail.html', {'membs': membs})
 
+@login_required
+def membership_edit(request, pk):
+    membs = get_object_or_404(memberships, pk=pk)
+    if request.method == "POST":
+        form = membershipForm(request.POST, instance=membs)
+        if form.is_valid():
+            membs = form.save(commit=False)
+            membs.author = request.user
+            membs.save()
+            return redirect('membership_detail', pk=membs.pk)
+    else:
+        form = membershipForm(instance=membs)
+    return render(request, 'cv/memberships_edit.html', {'form': form})
+
+
+@login_required
+def membership_new(request):
+    if request.method == "POST":
+        form = membershipForm(request.POST)
+        if form.is_valid():
+            membs = form.save(commit=False)
+            membs.author = request.user
+            membs.save()
+            return redirect('membership_detail', pk=membs.pk)
+    else:
+        form = membershipForm()
+    return render(request, 'cv/memberships_edit.html', {'form': form})
+
+
+@login_required
+def membership_remove(request, pk):
+    membs = get_object_or_404(memberships, pk=pk)
+    membs.delete()
+    return redirect('membershipsPage')
 
