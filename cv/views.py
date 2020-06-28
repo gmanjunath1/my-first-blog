@@ -4,7 +4,7 @@ from .models import skillSummary, Education, WorkExperience, AchieveAccomplish, 
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
-from .forms import skillsForm, projectForm, experienceForm, achievementForm, membershipForm
+from .forms import skillsForm, projectForm, experienceForm, achievementForm, membershipForm, degreeForm
 
 # Create your views here.
 def cv_sectionList(request):
@@ -191,6 +191,25 @@ def educationPage(request):
 	A = Education.objects.filter(edu_type='A-Level')
 	uni = Education.objects.filter(edu_type='Degree')
 	return render(request, 'cv/Education_main.html', {'gcses' : gcses, 'AS_Levels' : AS, 'A_Levels' : A, 'uni' : uni})
+
+@login_required
+def degree_detail(request, pk):
+    education = get_object_or_404(Education, pk=pk)
+    return render(request, 'cv/Education_Entry_Detail.html', {'education': education})
+
+@login_required
+def degree_edit(request, pk):
+    education = get_object_or_404(Education, pk=pk)
+    if request.method == "POST":
+        form = degreeForm(request.POST, instance=education)
+        if form.is_valid():
+            education = form.save(commit=False)
+            education.author = request.user
+            education.save()
+            return redirect('degree_detail', pk=education.pk)
+    else:
+        form = degreeForm(instance=education)
+    return render(request, 'cv/Education_edit.html', {'form': form})
 
 
 

@@ -6,7 +6,11 @@ urlpatterns = [
     path('SkillSummary/', views.skillsSummaryPage, name='summarySkillsPage'),
     path('SkillSummary/<int:pk>/', views.skills_detail, name='skills_detail'),
     path('SkillSummary/<int:pk>/edit/', views.skills_edit, name='skills_edit'),
+
     path('Education', views.educationPage, name='EducationPage'),
+    path('Education/<int:pk>/', views.degree_detail, name='degree_detail'),
+    path('Education/<int:pk>/edit/', views.degree_edit, name='degree_edit'),
+
     path('WorkExperience', views.workExperiencePage, name='workExperiencePage'),
     path('WorkExperience/<int:pk>/', views.WorkExperience_detail, name='WorkExperience_detail'),
     path('WorkExperience/new/', views.WorkExperience_new, name='WorkExperience_new'),

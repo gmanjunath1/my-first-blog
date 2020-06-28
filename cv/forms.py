@@ -1,5 +1,5 @@
 from django import forms
-from .models import skillSummary, Projects, WorkExperience, AchieveAccomplish, memberships
+from .models import skillSummary, Projects, WorkExperience, AchieveAccomplish, memberships, Education
 
 class skillsForm(forms.ModelForm):
 
@@ -34,3 +34,12 @@ class membershipForm(forms.ModelForm):
     class Meta:
         model = memberships
         fields = ('membershipName', 'dateMembership', 'description',) 
+
+
+class degreeForm(forms.ModelForm):
+
+    class Meta:
+        model = Education
+        fields = ('edu_type', 'subject', 'gradeAchieved', 'dateAchieved', 'extraInfo',) 
+
+

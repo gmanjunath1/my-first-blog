@@ -21,7 +21,7 @@
                     <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
                     <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
                     <a href="{% url 'logout' %}" class="top-menu"><span class="glyphicon glyphicon-log-out"></span></a>
-                    <p class="top-menu">Logged in as: {{ user.username }} </p>
+                    <p class="top-menu">Logged in: {{ user.username }} </p>
                 {% else %}
                     <a href="{% url 'login' %}" class="top-menu" ><span class="glyphicon glyphicon-lock"></span></a>
                 {% endif %}

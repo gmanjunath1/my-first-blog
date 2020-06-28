@@ -8,27 +8,39 @@
 
     {% for deg in uni %}
 	    <div class="page-header well well-lg col-md-4" style="margin-left:30px;">
-	        <h2><a style="color:#8458B3;font-family: Comic Sans MS, cursive, sans-serif;font-style: italic">{{ deg.subject }}: Current 2nd Year</a></h2>
+
+            {% if user.is_authenticated %}
+	           <h2><a href="{% url 'degree_detail' pk=deg.pk %}" style="color:#8458B3;font-family: Comic Sans MS, cursive, sans-serif;font-style: italic">{{ deg.subject }}: Current 2nd Year</a></h2>
+            {% else %}
+                <h2 style="color:#8458B3;font-family: Comic Sans MS, cursive, sans-serif;font-style: italic">{{ deg.subject }}: Current 2nd Year</h2>
+            {% endif %}
+
 	    	<p>{{ deg.extraInfo |linebreaksbr }}</p>        
 	    </div>
     {% endfor %}
 
     <div class="page-header well well-lg col-md-2" style="margin-left:30px;">
-        <h2><a style="color:#8458B3;font-family: Comic Sans MS, cursive, sans-serif;font-style: italic">A-Level</a></h2>
+
+            <h2 style="color:#8458B3;font-family: Comic Sans MS, cursive, sans-serif;font-style: italic">A-Level</h2>
+
         {% for A in A_Levels %}
         	<p>{{ A.subject|linebreaksbr }} - {{A.gradeAchieved}}</p>
         {% endfor %}
     </div>
 
     <div class="page-header well well-lg col-md-2" style="margin-left:30px;">
-        <h2><a style="color:#8458B3;font-family: Comic Sans MS, cursive, sans-serif;font-style: italic">AS-Level</a></h2>
+
+            <h2 style="color:#8458B3;font-family: Comic Sans MS, cursive, sans-serif;font-style: italic">AS-Level</h2>
+
         {% for AS in AS_Levels %}
         	<p>{{ AS.subject|linebreaksbr }} - {{AS.gradeAchieved}}</p>
         {% endfor %}
     </div>
     
     <div class="page-header well well-lg col-md-2" style="margin-left:30px;">
-        <h2><a style="color:#8458B3;font-family: Comic Sans MS, cursive, sans-serif;font-style: italic">GCSE</a></h2>
+
+         <h2 style="color:#8458B3;font-family: Comic Sans MS, cursive, sans-serif;font-style: italic">GCSE</h2>
+
         {% for gcse in gcses %}
         	<p>{{ gcse.subject|linebreaksbr }} - {{gcse.gradeAchieved}}</p>
         {% endfor %}
