@@ -11,5 +11,9 @@ urlpatterns = [
     path('Achievements', views.achieveAccomplish, name='achievementsPage'),
     path('Memberships', views.Memberships, name='membershipsPage'),
     path('Projects', views.projects, name='projectsPage'),
+    path('Projects/<int:pk>/', views.projects_detail, name='projects_detail'),
+    path('Projects/new/', views.projects_new, name='projects_new'),
+    path('Projects/<int:pk>/edit/', views.projects_edit, name='projects_edit'),
+    path('Projects/<pk>/remove/', views.projects_remove, name='projects_remove'),
 ]
 

@@ -13,6 +13,8 @@
                 <img src="{% static 'images/Picture1.png' %}" class="media-object col-md-1" style="vertical-align:left;margin:0px 0px;width:210px;height:178px;">
                 <img src="{% static 'images/Picture2.png' %}" class="media-object col-md-1" style="vertical-align:left;margin:0px 0px;width:210px;height:178px;">
                 {% if user.is_authenticated %}
+                    {% block new_addition %}
+                    {% endblock %}
                     <a href="{% url 'logout' %}" class="top-menu"><span class="glyphicon glyphicon-log-out"></span></a>
                     <p class="top-menu">Logged in as: {{ user.username }} </p>
                 {% else %}
