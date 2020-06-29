@@ -2,11 +2,7 @@
 <html>
     <head>
         <title>Login</title>
-        <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<!--         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
@@ -43,7 +39,6 @@
                     {% endif %}
 
                     <form method="post" class= "login-form" style = "margin-left: 35%;margin-right:5%;" action="{% url 'login' %}">
-                    <!-- <form method="post" class= "well well-lg text-center" style = "margin-left: 45%;" action="{% url 'login' %}"> -->
                     {% csrf_token %}
                         <table class = "login-table" style = "margin-left:auto; margin-right:auto;">
                             <tr>

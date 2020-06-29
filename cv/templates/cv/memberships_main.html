@@ -5,19 +5,18 @@
 {% endblock %}
 
 {% block new_addition %}
-    <a href="{% url 'membership_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+    <a href="{% url 'membership_new' %}"><span class="top-menu glyphicon glyphicon-plus"></span></a>
 {% endblock %}
 
 {% block content %}
 	{% for mem in membs %}
-	    <div class="page-header well well-lg col-md-10" style="margin-left:30px;">
+	    <div class="post well well-lg">
 	    	{% if user.is_authenticated %}
-	        	<h2><a href="{% url 'membership_detail' pk=mem.pk %}" style="color:#8458B3;font-family: Comic Sans MS, cursive, sans-serif;font-style: italic">{{mem.membershipName}}</a><small><br> <br>{{mem.dateMembership}}</small></h2>
+	        	<h2><a href="{% url 'membership_detail' pk=mem.pk %}" class="post-title">{{mem.membershipName}}</a><small><br> <br>{{mem.dateMembership}}</small></h2>
 	        {% else %}
-	        	<h2 style="color:#8458B3;font-family: Comic Sans MS, cursive, sans-serif;font-style: italic">{{mem.membershipName}}<small><br> <br>{{mem.dateMembership}}</small></h2>
+	        	<h2 class="post-title">{{mem.membershipName}}<small><br> <br>{{mem.dateMembership}}</small></h2>
 	        {% endif %}
-        	<p>{{ mem.description|linebreaksbr }}</p>	        
-	      
+        	<p>{{ mem.description|linebreaksbr }}</p>	        	      
 	    </div>
 	{% endfor %}
 {% endblock %}

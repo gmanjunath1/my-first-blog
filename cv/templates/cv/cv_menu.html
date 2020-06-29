@@ -15,18 +15,18 @@
                 {% if user.is_authenticated %}
                     {% block new_addition %}
                     {% endblock %}
-                    <a href="{% url 'logout' %}" class="top-menu"><span class="glyphicon glyphicon-log-out"></span></a>
+                    <a href="{% url 'logout' %}"><span class="top-menu glyphicon glyphicon-log-out"></span></a>
                     <p class="top-menu">Logged in: {{ user.username }} </p>
                 {% else %}
-                    <a href="{% url 'login' %}" class="top-menu" ><span class="glyphicon glyphicon-lock"></span></a>
+                    <a href="{% url 'login' %}"><span class="top-menu glyphicon glyphicon-lock"></span></a>
                 {% endif %}
-                <h1><a href="/" style="color:white;font-family: Comic Sans MS, cursive, sans-serif;">Gautam Manjunath </a></h1>
-                <p style="color:#DEDBF8;margin-top: 25px;font-style: italic;">Hiya! I'm a Computer Science student at The University of Birmingham. Welcome to my website!</p>
+                <h1><a class="main-header" href="/">Gautam Manjunath </a></h1>
+                <p class="sub-header">Hiya! I'm a Computer Science student at The University of Birmingham. Welcome to my website!</p>
             </div>
         </div>
         <div class="content-container">
             <div class="row">
-                <div class="col-md-11 text-justify" style="padding-top: 172px;">
+                <div class="col-md-10 text-justify main-area">
                     {% block content %}
                     {% endblock %}
                 </div>

@@ -5,16 +5,16 @@
 {% endblock %}
 
 {% block new_addition %}
-    <a href="{% url 'projects_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+    <a href="{% url 'projects_new' %}"><span class="top-menu glyphicon glyphicon-plus"></span></a>
 {% endblock %}
 
 {% block content %}
 	{% for proj in projects %}
-	    <div class="page-header well well-lg col-md-10" style="margin-left:30px;">
+	    <div class="post well well-lg ">
 	    	{% if user.is_authenticated %}
-	        	<h2><a href="{% url 'projects_detail' pk=proj.pk %}" style="color:#8458B3;font-family: Comic Sans MS, cursive, sans-serif;font-style: italic">{{proj.projectName}}</a><small><br> <br>{{proj.projectDate}}</small></h2>
+	        	<h2><a href="{% url 'projects_detail' pk=proj.pk %}" class="post-title">{{proj.projectName}}</a><small><br> <br>{{proj.projectDate}}</small></h2>
 	        {% else %}
-	        	<h2 style="color:#8458B3;font-family: Comic Sans MS, cursive, sans-serif;font-style: italic">{{proj.projectName}}<small><br> <br>{{proj.projectDate}}</small></h2>
+	        	<h2 class="post-title">{{proj.projectName}}<small><br> <br>{{proj.projectDate}}</small></h2>
 	        {% endif %}
 	        	<p>{{ proj.description|linebreaksbr }}</p>	        
 	    </div>

@@ -7,11 +7,11 @@
 
 
 {% block content %}
-    <div class="post well well-lg col-md-10" style="margin-left:20px; margin-top: 40px;">
+    <div class="post well well-lg " >
         {% if user.is_authenticated %}
      		<a class="btn btn-default" href="{% url 'skills_edit' pk=skills.pk %}"><span class="glyphicon glyphicon-pencil"></a>
 		{% endif %}
-        <h2 style="color:#8458B3;font-family: Comic Sans MS, cursive, sans-serif;font-style: italic">Summary of Skills</h2>
+        <h2 class="post-title">Summary of Skills</h2>
         <p>{{ skills.text |linebreaksbr}}</p>
     </div>
 {% endblock %}
