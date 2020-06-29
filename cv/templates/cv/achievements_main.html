@@ -11,12 +11,9 @@
 {% block content %}
 	{% for ach in achievements %}
 	    <div class="post well well-lg">
-	    	{% if user.is_authenticated %}
-	        	<h2><a href="{% url 'achievement_detail' pk=ach.pk %}" class="post-title">{{ach.titleAch}}</a><small><br> <br>{{ach.dateAchieved}}</small></h2>
-	        {% else %}
-	        	<h2 class="post-title">{{ach.titleAch}}<small><br> <br>{{ach.dateAchieved}}</small></h2>
-			{% endif %}
-	        <p>{{ ach.description|linebreaksbr }}</p>	        	        
+
+        <h2><a href="{% url 'achievement_detail' pk=ach.pk %}" id="achievement_detail" class="post-title">{{ach.titleAch}}</a><small><br> <br>{{ach.dateAchieved}}</small></h2>
+        <p>{{ ach.description|linebreaksbr }}</p>	        	        
 	    </div>
 	{% endfor %}
 {% endblock %}

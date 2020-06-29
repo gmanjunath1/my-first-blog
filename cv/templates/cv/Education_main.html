@@ -8,11 +8,7 @@
 
     {% for deg in uni %}
 	    <div class="post well well-lg col-md-5">
-            {% if user.is_authenticated %}
-	           <h2><a href="{% url 'degree_detail' pk=deg.pk %}" class="post-title">{{ deg.subject }}: Current 2nd Year</a></h2>
-            {% else %}
-                <h2 class="post-title">{{ deg.subject }}: Current 2nd Year</h2>
-            {% endif %}
+           <h2><a href="{% url 'degree_detail' pk=deg.pk %}" id="degree_detail" class="post-title">{{ deg.subject }}: Current 2nd Year</a></h2>
 	    	<p>{{ deg.extraInfo |linebreaksbr }}</p>        
 	    </div>
     {% endfor %}

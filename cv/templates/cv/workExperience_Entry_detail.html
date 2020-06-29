@@ -12,7 +12,7 @@
      		<a class="btn btn-default" href="{% url 'WorkExperience_edit' pk=experiences.pk %}"><span class="glyphicon glyphicon-pencil"></a>
  			<a class="btn btn-default" href="{% url 'WorkExperience_remove' pk=experiences.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
 		{% endif %}
-        <h2><a class="post-title">{{experiences.companyName}}</a><small><br> <br>{{experiencs.startDate}}</small></h2>
+        <h2><a class="post-title">{{experiences.companyName}}</a><small><br> <br>{{experiences.startDate}} - {{ experiences.duration }}</small></h2>
     	<p>{{ experiences.extraInfo|linebreaksbr }}</p>
     </div>
 {% endblock %}

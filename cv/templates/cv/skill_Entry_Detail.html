@@ -9,7 +9,7 @@
 {% block content %}
     <div class="post well well-lg " >
         {% if user.is_authenticated %}
-     		<a class="btn btn-default" href="{% url 'skills_edit' pk=skills.pk %}"><span class="glyphicon glyphicon-pencil"></a>
+     		<a class="btn btn-default" href="{% url 'skills_edit' pk=skills.pk %}"><span class="glyphicon glyphicon-pencil"></a></span>
 		{% endif %}
         <h2 class="post-title">Summary of Skills</h2>
         <p>{{ skills.text |linebreaksbr}}</p>

@@ -11,11 +11,8 @@
 {% block content %}
 	{% for exp in experiences %}
 	    <div class="post well well-lg">
-	    	{% if user.is_authenticated %}
-	        	<h2><a href="{% url 'WorkExperience_detail' pk=exp.pk %}" class="post-title">{{exp.companyName}}</a><small><br> <br>{{exp.startDate}}</small></h2>
-	        {% else %}
-	        	<h2 class="post-title">{{exp.companyName}}<small><br> <br>{{exp.startDate}}</small></h2>
-	        {% endif %}
+        	<h2><a href="{% url 'WorkExperience_detail' pk=exp.pk %}" id="work_detail" class="post-title">{{exp.companyName}}</a><small><br> <br>{{exp.startDate}} - {{ exp.duration }}</small></h2>
+
         	<p>{{ exp.extraInfo|linebreaksbr }}</p>	        
 	    </div>
 	{% endfor %}

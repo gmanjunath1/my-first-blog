@@ -11,12 +11,9 @@
 {% block content %}
 	{% for proj in projects %}
 	    <div class="post well well-lg ">
-	    	{% if user.is_authenticated %}
-	        	<h2><a href="{% url 'projects_detail' pk=proj.pk %}" class="post-title">{{proj.projectName}}</a><small><br> <br>{{proj.projectDate}}</small></h2>
-	        {% else %}
-	        	<h2 class="post-title">{{proj.projectName}}<small><br> <br>{{proj.projectDate}}</small></h2>
-	        {% endif %}
-	        	<p>{{ proj.description|linebreaksbr }}</p>	        
+        	<h2><a href="{% url 'projects_detail' pk=proj.pk %}" id="proj_detail" class="post-title">{{proj.projectName}}</a><small><br> <br>{{proj.projectDate}}</small></h2>
+
+        	<p>{{ proj.description|linebreaksbr }}</p>	        
 	    </div>
 	{% endfor %}
 {% endblock %}

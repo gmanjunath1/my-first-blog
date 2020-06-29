@@ -11,11 +11,9 @@
 {% block content %}
 	{% for mem in membs %}
 	    <div class="post well well-lg">
-	    	{% if user.is_authenticated %}
-	        	<h2><a href="{% url 'membership_detail' pk=mem.pk %}" class="post-title">{{mem.membershipName}}</a><small><br> <br>{{mem.dateMembership}}</small></h2>
-	        {% else %}
-	        	<h2 class="post-title">{{mem.membershipName}}<small><br> <br>{{mem.dateMembership}}</small></h2>
-	        {% endif %}
+
+	    	<h2><a href="{% url 'membership_detail' pk=mem.pk %}" id="membership_detail" class="post-title">{{mem.membershipName}}</a><small><br> <br>{{mem.dateMembership}}</small></h2>
+
         	<p>{{ mem.description|linebreaksbr }}</p>	        	      
 	    </div>
 	{% endfor %}
