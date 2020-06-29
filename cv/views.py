@@ -12,7 +12,7 @@ def cv_sectionList(request):
 
 def skillsSummaryPage(request):
     skills = skillSummary.objects.all()
-    return render(request, 'cv/skills_main.html', {'skills' : skills[0]})
+    return render(request, 'cv/skills_main.html', {'skills' : skills})
 
 @login_required
 def skills_detail(request, pk):

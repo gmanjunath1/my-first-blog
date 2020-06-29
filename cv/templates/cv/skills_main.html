@@ -5,8 +5,10 @@
 {% endblock %}
 
 {% block content %}
-    <div class="post well well-lg" >
-        <h2><a href="{% url 'skills_detail' pk=skills.pk %}" id="skills_summary_detail" class="post-title">Summary of Skills</a></h2>
-        <p>{{ skills.text|linebreaksbr }}</p>
-    </div>
+	{% for skill in skills %}
+	    <div class="post well well-lg" >
+	        <h2><a href="{% url 'skills_detail' pk=skill.pk %}" id="skills_summary_detail" class="post-title">Summary of Skills</a></h2>
+	        <p>{{ skill.text|linebreaksbr }}</p>
+	    </div>
+	{% endfor %}
 {% endblock %}
